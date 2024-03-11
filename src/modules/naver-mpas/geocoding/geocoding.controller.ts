@@ -1,11 +1,12 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query, Req } from '@nestjs/common';
+import { GeocodingService } from './geocoding.service';
 
 @Controller('geocoding')
 export class GeocodingController {
-  constructor() {}
+  constructor(private readonly geocodingService: GeocodingService) {}
 
   @Get()
-  getHello(): string {
-    return 'Hello Geocoding!';
+  getGeocoding(@Query() query: { searchKeyword: string }) {
+    return this.geocodingService.getGeocoding(query.searchKeyword);
   }
 }
