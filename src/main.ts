@@ -1,12 +1,20 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
+import { IoAdapter } from '@nestjs/platform-socket.io';
 
 async function bootstrap() {
+  const corsOption: CorsOptions = {
+    origin: 'http://localhost:3000',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  };
+
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
-  app.enableCors({
-    origin: 'http://localhost:3000',
-  });
+  app.enableCors(corsOption);
+  app.useWebSocketAdapter(new IoAdapter(app));
+
   await app.listen(4100);
 }
 bootstrap();
