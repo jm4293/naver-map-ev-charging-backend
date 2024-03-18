@@ -28,6 +28,7 @@
     "@nestjs/websockets": "^10.3.3",
     "@types/socket.io": "^3.0.2",
     "axios": "^1.6.7",
+    "class-validator": "^0.14.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "socket.io": "^4.7.4"

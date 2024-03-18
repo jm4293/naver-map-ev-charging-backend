@@ -6,7 +6,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint/eslint-plugin'],
-  extends: ['plugin:@typescript-eslint/recommended', 'prettier'],
+  extends: ['plugin:prettier/recommended', 'prettier'],
   root: true,
   env: {
     node: true,
@@ -24,6 +24,6 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
-    "no-unused-vars": "off",
+    'no-unused-vars': 'off',
   },
 };
