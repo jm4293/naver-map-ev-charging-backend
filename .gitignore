@@ -3,6 +3,7 @@
 /node_modules
 /build
 
+
 # Logs
 logs
 *.log
@@ -36,7 +37,8 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 # dotenv environment variable files
-.naver-maps.env
+src/env/.naver-maps.env
+src/env/.env.typeorm-mysql
 .env.development.local
 .env.test.local
 .env.production.local
