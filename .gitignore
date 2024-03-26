@@ -37,8 +37,8 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 # dotenv environment variable files
-src/env/.naver-maps.env
-src/env/.env.typeorm-mysql
+env/.naver-maps.env
+env/.env.typeorm-mysql
 .env.development.local
 .env.test.local
 .env.production.local
