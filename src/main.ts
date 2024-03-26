@@ -4,6 +4,7 @@ import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.int
 import { IoAdapter } from '@nestjs/platform-socket.io';
 import { ValidationPipe } from '@nestjs/common';
 import { ValidationPipeConfig } from './config';
+import { setupSwagger } from './util/setupSwagger';
 
 async function bootstrap() {
   const corsOption: CorsOptions = {
@@ -17,6 +18,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe(ValidationPipeConfig));
   app.enableCors(corsOption);
   app.useWebSocketAdapter(new IoAdapter(app));
+
+  setupSwagger(app);
 
   await app.listen(4100);
 }
