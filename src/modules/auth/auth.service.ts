@@ -7,9 +7,14 @@ import { AuthSignUpEntity } from '../../data-access/entity';
 @Injectable()
 export class AuthService {
   constructor(private readonly authSignUpRepository: AuthSignUpRepository) {}
-  async signUp(requestBody: AuthSignUpRequestDto): Promise<AuthSignUpResponseDto> {
-    console.log('requestBody22', requestBody);
 
+  async existsEmail(email: string): Promise<{ exists: boolean }> {
+    const isExistEmail = await this.authSignUpRepository.existsByEmail(email);
+
+    return { exists: isExistEmail };
+  }
+
+  async signUp(requestBody: AuthSignUpRequestDto): Promise<AuthSignUpResponseDto> {
     await this.authSignUpRepository.save(requestBody);
 
     return AuthSignUpResponseDto.success(requestBody);
