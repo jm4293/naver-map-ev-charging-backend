@@ -8,9 +8,9 @@ export class ResponseDto {
     private readonly data?: any,
   ) {}
 
-  static success() {
-    return new ResponseDto(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
-  }
+  // static success() {
+  //   return new ResponseDto(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
+  // }
 
   static databaseError() {
     throw new InternalServerErrorException(

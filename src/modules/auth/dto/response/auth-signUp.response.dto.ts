@@ -1,15 +1,15 @@
 import { ResponseDto } from '../../../../types/classes/response.dto';
 import { ResponseCode, ResponseMessage } from '../../../../types/enums';
 import { BadRequestException } from '@nestjs/common';
-import { UsersSignUpRequestDto } from '../request';
+import { AuthSignUpRequestDto } from '../request';
 
-export class UsersSignUpResponseDto extends ResponseDto {
+export class AuthSignUpResponseDto extends ResponseDto {
   constructor(code: ResponseCode, message: ResponseMessage, data?: any) {
     super(code, message, data);
   }
 
-  static success(data?: UsersSignUpRequestDto) {
-    return new UsersSignUpResponseDto(ResponseCode.SUCCESS, ResponseMessage.SUCCESS, data);
+  static success(data?: AuthSignUpRequestDto) {
+    return new AuthSignUpResponseDto(ResponseCode.SUCCESS, ResponseMessage.SUCCESS, data);
   }
 
   static duplicateEmail() {

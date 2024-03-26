@@ -7,6 +7,7 @@ import { ChattingModule } from './modules/chatting/chatting.module';
 import { UsersModule } from './modules/users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { configModuleConfig, typeormMysqlConfig } from './config';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { configModuleConfig, typeormMysqlConfig } from './config';
     GeocodingModule,
     ChattingModule,
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

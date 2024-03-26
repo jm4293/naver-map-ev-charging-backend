@@ -9,6 +9,7 @@ export const ValidationPipeConfig: ValidationPipeOptions = {
   // },
   exceptionFactory: (errors) => {
     const errorMessages = Object.values(errors[0].constraints)[0];
+
     return new BadRequestException(
       new ResponseDto(ResponseCode.VALIDATION_FAIL, ResponseMessage.VALIDATION_FAIL, errorMessages),
     );

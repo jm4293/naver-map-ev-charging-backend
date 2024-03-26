@@ -7,8 +7,6 @@ export class GeocodingService {
   constructor(private configService: ConfigService) {}
 
   async getGeocoding(searchKeyword: string) {
-    console.log('ConfigService ', this.configService.get<string>('NAVER_CLIENT_ID'));
-
     return axios
       .get(`https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=${searchKeyword}`, {
         headers: {

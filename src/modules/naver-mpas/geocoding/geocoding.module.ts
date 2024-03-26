@@ -4,6 +4,7 @@ import { GeocodingService } from './geocoding.service';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
+  imports: [ConfigModule],
   controllers: [GeocodingController],
   providers: [GeocodingService],
 })
