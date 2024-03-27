@@ -1,10 +1,11 @@
 import { Body, Controller, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { ApiOperation, ApiProperty } from '@nestjs/swagger';
+import { ApiOperation } from '@nestjs/swagger';
 import { validate } from 'class-validator';
 import { AuthSignUpRequestDto } from './dto/request';
 import { AuthSignUpResponseDto } from './dto/response';
 import { AuthExistsEmailRequestDto } from './dto/request/auth-existsEmail.request.dto';
+import * as bcrypt from 'bcrypt';
 
 @Controller('/auth')
 export class AuthController {
@@ -25,6 +26,9 @@ export class AuthController {
       const errorMessages = errors.map((el) => Object.values(el.constraints)).flat();
       throw new HttpException({ message: '유효성 검사 오류', errors: errorMessages }, HttpStatus.BAD_REQUEST);
     }
+
+    const salt = await bcrypt.genSalt();
+    requestBody.password = await bcrypt.hash(requestBody.password, salt);
 
     return this.authService.signUp(requestBody);
   }

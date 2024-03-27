@@ -31,18 +31,6 @@ export class AuthSignUpRequestDto {
   })
   password: string;
 
-  // @ApiProperty({
-  //   description: '비밀번호 확인',
-  //   required: true,
-  // })
-  // @IsNotEmpty({
-  //   message: '비밀번호 확인을 입력해주세요.',
-  // })
-  // @MinLength(8, {
-  //   message: '비밀번호는 8자 이상이어야 합니다.',
-  // })
-  // passwordConfirm: string;
-
   @ApiProperty({
     example: '홍길동',
     description: '이름',

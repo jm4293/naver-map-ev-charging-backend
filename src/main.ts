@@ -4,11 +4,11 @@ import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.int
 import { IoAdapter } from '@nestjs/platform-socket.io';
 import { ValidationPipe } from '@nestjs/common';
 import { ValidationPipeConfig } from './config';
-import { setupSwagger } from './util/setupSwagger';
+import { setupSwagger } from './util/swagger/setupSwagger';
 
 async function bootstrap() {
   const corsOption: CorsOptions = {
-    origin: ['http://localhost:3000', 'http://192.168.0.62:3000'],
+    origin: ['http://localhost:3000', 'http://192.168.0.62:3000', 'http://8134293.iptime.org:3000'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   };
