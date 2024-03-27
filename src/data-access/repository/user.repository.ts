@@ -1,20 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { AuthSignUpEntity } from '../entity';
+import { UserEntity } from '../entity';
 
 @Injectable()
-export class AuthSignUpRepository {
+export class UserRepository {
   constructor(
-    @InjectRepository(AuthSignUpEntity)
-    private readonly repository: Repository<AuthSignUpEntity>,
+    @InjectRepository(UserEntity)
+    private readonly repository: Repository<UserEntity>,
   ) {}
 
   async existsByEmail(email: string): Promise<boolean> {
     return await this.repository.exists({ where: { email } });
   }
 
-  async save(authSignUpEntity: AuthSignUpEntity): Promise<AuthSignUpEntity> {
+  async save(authSignUpEntity: UserEntity): Promise<UserEntity> {
     return await this.repository.save(authSignUpEntity);
+  }
+
+  async findByEmail(email: string): Promise<UserEntity> {
+    return await this.repository.findOne({ where: { email } });
   }
 }

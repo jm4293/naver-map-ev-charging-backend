@@ -1,3 +1,3 @@
-import { AuthSignUpEntity } from './auth-signUp.entity';
+import { UserEntity } from './user.entity';
 
-export { AuthSignUpEntity };
+export { UserEntity };

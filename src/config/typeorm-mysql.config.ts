@@ -1,6 +1,6 @@
 import { TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { AuthSignUpEntity } from '../data-access/entity';
+import { UserEntity } from '../data-access/entity';
 
 export const typeormMysqlConfig: TypeOrmModuleAsyncOptions = {
   imports: [ConfigModule],
@@ -14,7 +14,7 @@ export const typeormMysqlConfig: TypeOrmModuleAsyncOptions = {
       password: configService.get<string>('DATABASE_PASSWORD'),
       database: configService.get<string>('DATABASE_NAME'),
       synchronize: false,
-      entities: [AuthSignUpEntity],
+      entities: [UserEntity],
     };
   },
 };

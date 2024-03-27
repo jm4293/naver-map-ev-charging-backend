@@ -1,3 +1,3 @@
-import { AuthSignUpRepository } from './auth-signUp.repository';
+import { UserRepository } from './user.repository';
 
-export { AuthSignUpRepository };
+export { UserRepository };

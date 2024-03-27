@@ -1,11 +1,11 @@
-import { Body, Controller, HttpException, HttpStatus, Post } from '@nestjs/common';
+import { Body, Controller, HttpException, HttpStatus, Post, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { ApiOperation } from '@nestjs/swagger';
 import { validate } from 'class-validator';
-import { AuthSignUpRequestDto } from './dto/request';
-import { AuthSignUpResponseDto } from './dto/response';
-import { AuthExistsEmailRequestDto } from './dto/request/auth-existsEmail.request.dto';
+import { AuthExistsEmailRequestDto, AuthSignInRequestDto, AuthSignUpRequestDto } from './dto/request';
+import { AuthSignInResponseDto, AuthSignUpResponseDto } from './dto/response';
 import * as bcrypt from 'bcrypt';
+import { Response } from 'express';
 
 @Controller('/auth')
 export class AuthController {
@@ -31,5 +31,18 @@ export class AuthController {
     requestBody.password = await bcrypt.hash(requestBody.password, salt);
 
     return this.authService.signUp(requestBody);
+  }
+
+  @ApiOperation({ summary: '로그인' })
+  @Post('/signin')
+  async signIn(@Body() requestBody: AuthSignInRequestDto): Promise<AuthSignInResponseDto> {
+    const errors = await validate(requestBody);
+
+    if (errors.length > 0) {
+      const errorMessages = errors.map((el) => Object.values(el.constraints)).flat();
+      throw new HttpException({ message: '유효성 검사 오류', errors: errorMessages }, HttpStatus.BAD_REQUEST);
+    }
+
+    return this.authService.singIn(requestBody);
   }
 }

@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthSignUpRepository } from './repository';
-import { AuthSignUpEntity } from './entity';
+import { UserRepository } from './repository';
+import { UserEntity } from './entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([AuthSignUpEntity])],
-  providers: [AuthSignUpRepository],
-  exports: [AuthSignUpRepository],
+  imports: [TypeOrmModule.forFeature([UserEntity])],
+  providers: [UserRepository],
+  exports: [UserRepository],
 })
 export class DataAccessModule {}
